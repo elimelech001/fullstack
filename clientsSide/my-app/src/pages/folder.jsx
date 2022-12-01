@@ -5,6 +5,7 @@ import fetchData from "./fetch";
 function Folder({ deleteFile, setOnInput, submitRename }) {
   const nav = useNavigate();
   const [info, setInfo] = useState('');
+  const [showInfo, setShowInfo] = useState(false);
   const [rename, setRename] = useState(false);
   const { pathname } = useLocation();
   const { data } = fetchData(pathname);
@@ -19,7 +20,7 @@ function Folder({ deleteFile, setOnInput, submitRename }) {
         return (
           <div className="border">
             <h2>{e.name}</h2>
-            <button id ={e.name} onClick={(e) => setInfo(e.target.id)}>info</button>
+            <button  onClick={(event) => setInfo(`${pathname.slice(1)}/${e.name}/info`)+setShowInfo(!showInfo)}>info</button>
             <button>
               {" "}
               <Link to={`${pathname.slice(1)}/${e.name}`}>enter</Link>
@@ -34,7 +35,7 @@ function Folder({ deleteFile, setOnInput, submitRename }) {
               delete
             </button>{" "}
             <br />
-            {info==e.name&&<Info path={`${pathname.slice(1)}/${e.name}/info`}/>}
+           
             {rename && (
               <>
                 name:
@@ -70,8 +71,9 @@ function Folder({ deleteFile, setOnInput, submitRename }) {
           </div>
         );
       })}
-      <button onClick={(e) => console.log("a")}></button>
-    </>
+<br /><br /><br /><br />
+    
+ {showInfo&&<> <h2>info</h2>  <Info path={info}/></>}    </>
   );
 }
 

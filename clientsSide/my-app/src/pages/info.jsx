@@ -4,7 +4,6 @@ import FetchData from "./fetch";
 function Info({path}) {
 
  const {data}=FetchData(path)
-const j= JSON.stringify(data)
 
 return (
    

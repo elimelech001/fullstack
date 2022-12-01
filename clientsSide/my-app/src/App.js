@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.css";
-import File from "./pages/file";
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Folder from "./pages/folder";
